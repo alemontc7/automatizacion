@@ -6,6 +6,7 @@ Background:
     Given I am on the online catalog
     When I click on the button "Enter GMO OnLine"
 
+@maximize
 Scenario Outline: Fill the quantity input with letters
   And I fill in the input box of the product "<product>" with "<input>"
   When I click on the "Place an order" Button
