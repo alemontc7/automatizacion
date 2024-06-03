@@ -4,12 +4,12 @@ Given(/^I am on the online catalog$/) do
   visit ('https://demo.borland.com/gmopost/')
 end
 
-#When I search for "houston dynamo tickets"
-When(/^I click in the button "Enter GMO OnLine"$/) do
+When(/^I click on the button "Enter GMO OnLine"$/) do
   click_button('bSubmit')
 end
 
 #Then I see a link for the "SIAA"
-Then('I see a {string}') do |ucbLink|
-  expect(page).to have_link(ucbLink)
+Then('I see a {string}') do |product|
+
+  expect(page).to have_link(product)
 end
