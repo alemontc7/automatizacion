@@ -61,3 +61,18 @@ Scenario Outline: Fill the quantity input with white spaces
     | Padded Socks           |    |
     | Hiking Boots           |    |
     | Back Country Shorts    |    |
+
+
+Scenario Outline: Fill the quantity input with decimals
+  And I fill in the input box of the product "<product>" with "<input>"
+  When I click on the "Place an order" Button
+  Then I receive a notification "Please enter only digits in this field."
+
+  Examples:
+    | product                | input | 
+    | 3 Person Dome Tent     | -132   |
+    | External Frame Backpack| -123   |
+    | Glacier Sun Glasses    | -342 |
+    | Padded Socks           | -1243   |
+    | Hiking Boots           | -654  |
+    | Back Country Shorts    | -3451   |
