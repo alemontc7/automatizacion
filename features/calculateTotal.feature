@@ -43,3 +43,53 @@ Scenario: Fill the quantity of two different products
 
     When I click on the "Place an order" Button
     Then I see the Product Total for all the products
+
+Scenario: Fill the quantity of three different products
+	And I write the quantities for the product with the table below 
+
+    | product                | input |   
+    | 3 Person Dome Tent     | 15    | 
+    | External Frame Backpack| 7     |  
+    | Glacier Sun Glasses    | 2     | 
+
+    When I click on the "Place an order" Button
+    Then I see the Product Total for all the products
+
+Scenario: Fill the quantity of four different products
+	And I write the quantities for the product with the table below 
+
+    | product                | input |   
+    | 3 Person Dome Tent     | 15    | 
+    | External Frame Backpack| 7     |  
+    | Glacier Sun Glasses    | 2     | 
+    | Padded Socks           | 19    | 
+
+    When I click on the "Place an order" Button
+    Then I see the Product Total for all the products
+    
+Scenario: Fill the quantity of five different products
+	And I write the quantities for the product with the table below 
+
+    | product                | input |   
+    | 3 Person Dome Tent     | 15    | 
+    | External Frame Backpack| 7     |  
+    | Glacier Sun Glasses    | 2     | 
+    | Padded Socks           | 19    | 
+    | Hiking Boots           | 12     |  
+
+    When I click on the "Place an order" Button
+    Then I see the Product Total for all the products
+
+Scenario: Fill the quantity of six different products
+	And I write the quantities for the product with the table below 
+
+    | product                | input |   
+    | 3 Person Dome Tent     | 15    | 
+    | External Frame Backpack| 7     |  
+    | Glacier Sun Glasses    | 2     | 
+    | Padded Socks           | 19    | 
+    | Hiking Boots           | 12    |  
+    | Back Country Shorts    | 18    |
+
+    When I click on the "Place an order" Button
+    Then I see the Product Total for all the products
