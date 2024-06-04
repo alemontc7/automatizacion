@@ -7,9 +7,27 @@ And(/^I write "(.*)" in the input box of the product "(.*)"$/) do |input, produc
   end
 end
 
+And(/^I write the quantities for the product with the table below$/) do | table |
+    data = table.rows_hash  
+    data.each_pair do |key, value|
+        case key
+            when "3 Person Dome Tent"
+                fill_in 'QTY_TENTS', :with => value
+            when "External Frame Backpack"
+                fill_in 'QTY_BACKPACKS', :with => value
+            when "Glacier Sun Glasses"
+                fill_in 'QTY_GLASSES', :with => value
+            when "Padded Socks"
+                fill_in 'QTY_SOCKS', :with => value
+            when "Hiking Boots"
+                fill_in 'QTY_BOOTS', :with => value
+            when "Back Country Shorts"
+                fill_in 'QTY_SHORTS', :with => value
+        end
+    end
+end
 
-Then(/^I see the total price for the product$/) do
-
+Then(/^I see the total price for each product$/) do
     summary_table_selector = "body > form:nth-child(3) > table:nth-child(2) > tbody:nth-child(1) > tr:nth-child(1) > td:nth-child(1) > div:nth-child(1) > center:nth-child(1) > table:nth-child(1)"
     within(summary_table_selector) do 
         rows = all("tr")
@@ -27,3 +45,24 @@ Then(/^I see the total price for the product$/) do
         end
     end
 end
+
+Then(/^I see the Product Total for all the products$/) do
+    summary_table_selector = "body > form:nth-child(3) > table:nth-child(2) > tbody:nth-child(1) > tr:nth-child(1) > td:nth-child(1) > div:nth-child(1) > center:nth-child(1) > table:nth-child(1)"
+    within(summary_table_selector) do 
+        rows = all("tr")
+        expected_product_total = 0.0 
+        rows.each_with_index do |row, index|
+            next if index == 0
+            cells = row.all('td')
+            if cells.count == 5
+                total_price = cells[4].text.strip.gsub(/[^\d\.]/, '').to_f
+                expected_product_total += total_price
+                # expect(total_price).to eq(expected_total_price)
+            end
+        end
+        cells = rows[rows.count - 4].all('td') 
+        product_total = cells[2].text.strip.gsub(/[^\d\.]/, '').to_f
+        expect(product_total).to eq(expected_product_total.round(2))
+    end
+end
+
