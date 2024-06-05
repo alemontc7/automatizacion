@@ -9,7 +9,7 @@ Background:
 Scenario Outline: Fill the quantity of just one product
   And I write "<input>" in the input box of the product "<product>"
   When I click on the "Place an order" Button
-  Then I see the total price for the product
+  Then I see the total price for each product
 
   Examples:
     | product                | input |   
@@ -19,3 +19,101 @@ Scenario Outline: Fill the quantity of just one product
     | Padded Socks           | 1     | 
     | Hiking Boots           | 1     |  
     | Back Country Shorts    | 1     |
+
+Scenario Outline: Fill the quantity of just one product with different ammouts
+  And I write "<input>" in the input box of the product "<product>"
+  When I click on the "Place an order" Button
+  Then I see the total price for each product
+
+  Examples:
+    | product                | input |   
+    | 3 Person Dome Tent     | 15     | 
+    | External Frame Backpack| 7     |  
+    | Glacier Sun Glasses    | 2     | 
+    | Padded Socks           | 19     | 
+    | Hiking Boots           | 31     |  
+    | Back Country Shorts    | 4     |
+
+Scenario: Fill the quantity of two different products
+	And I write the quantities for the product with the table below 
+
+    | product                | input |   
+    | 3 Person Dome Tent     | 15     | 
+    | External Frame Backpack| 7     |  
+
+    When I click on the "Place an order" Button
+    Then I see the Product Total for all the products
+    And I see the correct Sales Tax for the order
+    And I see the Grand Total calculated correctly
+
+Scenario: Fill the quantity of three different products
+	And I write the quantities for the product with the table below 
+
+    | product                | input |   
+    | 3 Person Dome Tent     | 15    | 
+    | External Frame Backpack| 7     |  
+    | Glacier Sun Glasses    | 2     | 
+
+    When I click on the "Place an order" Button
+    Then I see the Product Total for all the products
+    And I see the correct Sales Tax for the order
+    And I see the Grand Total calculated correctly
+
+Scenario: Fill the quantity of four different products
+	And I write the quantities for the product with the table below 
+
+    | product                | input |   
+    | 3 Person Dome Tent     | 15    | 
+    | External Frame Backpack| 7     |  
+    | Glacier Sun Glasses    | 2     | 
+    | Padded Socks           | 19    | 
+
+    When I click on the "Place an order" Button
+    Then I see the Product Total for all the products
+    And I see the correct Sales Tax for the order
+    And I see the Grand Total calculated correctly
+    
+Scenario: Fill the quantity of five different products
+	And I write the quantities for the product with the table below 
+
+    | product                | input |   
+    | 3 Person Dome Tent     | 15    | 
+    | External Frame Backpack| 7     |  
+    | Glacier Sun Glasses    | 2     | 
+    | Padded Socks           | 19    | 
+    | Hiking Boots           | 12     |  
+
+    When I click on the "Place an order" Button
+    Then I see the Product Total for all the products
+    And I see the correct Sales Tax for the order
+    And I see the Grand Total calculated correctly
+
+Scenario: Fill the quantity of six different products
+	And I write the quantities for the product with the table below 
+
+    | product                | input |   
+    | 3 Person Dome Tent     | 15    | 
+    | External Frame Backpack| 7     |  
+    | Glacier Sun Glasses    | 2     | 
+    | Padded Socks           | 19    | 
+    | Hiking Boots           | 12    |  
+    | Back Country Shorts    | 18    |
+
+    When I click on the "Place an order" Button
+    Then I see the Product Total for all the products
+    And I see the correct Sales Tax for the order
+    And I see the Grand Total calculated correctly
+
+Scenario: Fill the quantity of multiple different products
+	And I write the quantities for the product with the table below 
+
+    | product                | input |   
+    | 3 Person Dome Tent     | 15    | 
+    | Glacier Sun Glasses    | 2     | 
+    | Hiking Boots           | 12    |  
+    | Back Country Shorts    | 1     |
+
+    When I click on the "Place an order" Button
+    Then I see the Product Total for all the products
+    And I see the correct Sales Tax for the order
+    And I see the Grand Total calculated correctly
