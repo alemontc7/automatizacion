@@ -71,7 +71,11 @@ Scenario: Fill out the Billing form correctly with Visa
     | Phone       | 314-159-2654           |
     | E-mail      | josetlito@gmail.com |
     | Card Type   | American Express   |
+<<<<<<< HEAD
     | Card Number | 1234-123456-12345   |
+=======
+    | Card Number | 3141-592535-89792   |
+>>>>>>> e45969d9bbb73df7f9b19935517cc19f54f572b4
     | Expiration  | 09/26              |
     
   And I check the option to ship the order to the same person
