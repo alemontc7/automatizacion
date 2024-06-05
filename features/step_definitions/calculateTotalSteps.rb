@@ -11,7 +11,7 @@ end
 Then(/^I see the total price for the product$/) do
 
     summary_table_selector = "body > form:nth-child(3) > table:nth-child(2) > tbody:nth-child(1) > tr:nth-child(1) > td:nth-child(1) > div:nth-child(1) > center:nth-child(1) > table:nth-child(1)"
-    within(summary_table_selector) do 
+    within(summary_table_selector) do
         rows = all("tr")
         rows.each_with_index do |row, index|
             next if index == 0
