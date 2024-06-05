@@ -1,12 +1,12 @@
-Feature: As a sleepy online shopper
-  I want to copy the bill data to the ship data
-  So I can ship de product to the same pertsona
+Feature: As an online shopper
+  I want to receive a receipt after placing my order 
+  So I can have a record of my purchase
 
 Background:
   Given I am on the online catalog
   When I click on the button "Enter GMO OnLine"
 
-Scenario Outline: Fill the form with data to be copied in the shipping form
+Scenario Outline: Fill the form with the users data
   And I fill in the input box of the product "<product>" with "<quantity>"
   When I click on the "Place an order" Button
   And I see the summary of my purchase
@@ -16,19 +16,14 @@ Scenario Outline: Fill the form with data to be copied in the shipping form
     | Address     | 123 Elm Street     |
     | City        | Springfield        |
     | State       | IL                 |
-    | Zip         | 0000               |
-    | Phone       | 555-1234           |
+    | Zip         | 30009               |
+    | Phone       | 123-123-1234           |
     | E-mail      | john.doe@example.com |
-    | Card Type   | American Express   |
-    | Card Number | 378282246310005    |
-    | Expiration  | 12/25              |
+    | Card Type   | Visa   |
+    | Card Number | 1234-1234-1234-1234   |
+    | Expiration  | 07/24              |
   When I check the option to ship the order to the same person
-  Then I see the following table in the Ship to form:
-    | Name        | John Doe           |
-    | Address     | 123 Elm Street     |
-    | City        | Springfield        |
-    | State       | IL                 |
-    | Zip         | 0000               |
+  When I click on the "Place The order" Button
   Examples:
   | product                | quantity | 
   | 3 Person Dome Tent     | 2   |
