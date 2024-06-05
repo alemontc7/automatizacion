@@ -1,5 +1,5 @@
 Given(/^I am on the online catalog$/) do
-  page.driver.browser.manage.window.maximize
+  page.driver.browser.manage.window
   visit ('https://demo.borland.com/gmopost/')
 end
 

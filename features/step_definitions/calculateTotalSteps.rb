@@ -57,7 +57,6 @@ Then(/^I see the Product Total for all the products$/) do
             if cells.count == 5
                 total_price = cells[4].text.strip.gsub(/[^\d\.]/, '').to_f
                 expected_product_total += total_price
-                # expect(total_price).to eq(expected_total_price)
             end
         end
         cells = rows[rows.count - 4].all('td') 
@@ -65,4 +64,58 @@ Then(/^I see the Product Total for all the products$/) do
         expect(product_total).to eq(expected_product_total.round(2))
     end
 end
+
+And(/^I see the correct Sales Tax for the order$/) do
+    summary_table_selector = "body > form:nth-child(3) > table:nth-child(2) > tbody:nth-child(1) > tr:nth-child(1) > td:nth-child(1) > div:nth-child(1) > center:nth-child(1) > table:nth-child(1)"
+    within(summary_table_selector) do 
+        rows = all("tr")
+        expected_product_total = 0.0 
+        rows.each_with_index do |row, index|
+            next if index == 0
+            cells = row.all('td')
+            if cells.count == 5
+                total_price = cells[4].text.strip.gsub(/[^\d\.]/, '').to_f
+                expected_product_total += total_price
+            end
+        end
+
+        cells = rows[rows.count - 4].all('td') 
+        product_total = cells[2].text.strip.gsub(/[^\d\.]/, '').to_f
+
+        cells = rows[rows.count - 3].all('td') 
+        sales_tax = cells[1].text.strip.gsub(/[^\d\.]/, '').to_f
+
+        expected_sales_tax = (expected_product_total.round(2) * 0.05).round(2)
+        expect(sales_tax).to eq(expected_sales_tax)
+    end
+end
+
+And(/^I see the Grand Total calculated correctly$/) do
+    summary_table_selector = "body > form:nth-child(3) > table:nth-child(2) > tbody:nth-child(1) > tr:nth-child(1) > td:nth-child(1) > div:nth-child(1) > center:nth-child(1) > table:nth-child(1)"
+    within(summary_table_selector) do 
+        rows = all("tr")
+        expected_product_total = 0.0 
+        rows.each_with_index do |row, index|
+            next if index == 0
+            cells = row.all('td')
+            if cells.count == 5
+                total_price = cells[4].text.strip.gsub(/[^\d\.]/, '').to_f
+                expected_product_total += total_price
+            end
+        end
+        cells = rows[rows.count - 4].all('td') 
+        product_total = cells[2].text.strip.gsub(/[^\d\.]/, '').to_f
+
+        cells = rows[rows.count - 3].all('td') 
+        sales_tax = cells[1].text.strip.gsub(/[^\d\.]/, '').to_f
+
+        cells = rows[rows.count - 1].all('td') 
+        grand_total = cells[1].text.strip.gsub(/[^\d\.]/, '').to_f
+
+        expected_grand_total = (sales_tax + product_total + 5.0).round(2)
+        expect(grand_total).to eq(expected_grand_total)
+    end
+end
+
+
 

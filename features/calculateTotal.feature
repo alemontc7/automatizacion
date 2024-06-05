@@ -43,6 +43,8 @@ Scenario: Fill the quantity of two different products
 
     When I click on the "Place an order" Button
     Then I see the Product Total for all the products
+    And I see the correct Sales Tax for the order
+    And I see the Grand Total calculated correctly
 
 Scenario: Fill the quantity of three different products
 	And I write the quantities for the product with the table below 
@@ -54,6 +56,8 @@ Scenario: Fill the quantity of three different products
 
     When I click on the "Place an order" Button
     Then I see the Product Total for all the products
+    And I see the correct Sales Tax for the order
+    And I see the Grand Total calculated correctly
 
 Scenario: Fill the quantity of four different products
 	And I write the quantities for the product with the table below 
@@ -66,6 +70,8 @@ Scenario: Fill the quantity of four different products
 
     When I click on the "Place an order" Button
     Then I see the Product Total for all the products
+    And I see the correct Sales Tax for the order
+    And I see the Grand Total calculated correctly
     
 Scenario: Fill the quantity of five different products
 	And I write the quantities for the product with the table below 
@@ -79,6 +85,8 @@ Scenario: Fill the quantity of five different products
 
     When I click on the "Place an order" Button
     Then I see the Product Total for all the products
+    And I see the correct Sales Tax for the order
+    And I see the Grand Total calculated correctly
 
 Scenario: Fill the quantity of six different products
 	And I write the quantities for the product with the table below 
@@ -93,3 +101,19 @@ Scenario: Fill the quantity of six different products
 
     When I click on the "Place an order" Button
     Then I see the Product Total for all the products
+    And I see the correct Sales Tax for the order
+    And I see the Grand Total calculated correctly
+
+Scenario: Fill the quantity of multiple different products
+	And I write the quantities for the product with the table below 
+
+    | product                | input |   
+    | 3 Person Dome Tent     | 15    | 
+    | Glacier Sun Glasses    | 2     | 
+    | Hiking Boots           | 12    |  
+    | Back Country Shorts    | 1     |
+
+    When I click on the "Place an order" Button
+    Then I see the Product Total for all the products
+    And I see the correct Sales Tax for the order
+    And I see the Grand Total calculated correctly
