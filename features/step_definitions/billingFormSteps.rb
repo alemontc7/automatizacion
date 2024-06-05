@@ -54,6 +54,7 @@ end
 
 When(/^I click on the "Place The order" Button$/) do
   click_button('bSubmit')
+  sleep 5
 end
 
 

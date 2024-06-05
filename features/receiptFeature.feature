@@ -24,6 +24,13 @@ Scenario Outline: Fill the form with the users data
     | Expiration  | 07/24              |
   When I check the option to ship the order to the same person
   When I click on the "Place The order" Button
+  Then I see the following data in the receipt
+    | Name        | John Doe           |
+    | Address     | 123 Elm Street     |
+    | City        | Springfield        |
+    | State       | IL                 |
+    | Zip         | 30009               |
+    | Phone       | 123-123-1234           |
   Examples:
   | product                | quantity | 
   | 3 Person Dome Tent     | 2   |
